@@ -19,13 +19,13 @@ sub _complete {
     my ($comp, $args) = @_;
     if (ref($comp) eq 'ARRAY') {
         require Complete::Util;
-        Complete::Util::complete_array_elem(
+        return Complete::Util::complete_array_elem(
             array => $comp,
             word  => $args->{word},
             ci    => $args->{ci},
         );
     } elsif (ref($comp) eq 'CODE') {
-        $comp->(%$args);
+        return $comp->(%$args);
     } else {
         return undef;
     }
@@ -48,13 +48,13 @@ sub run_shell_completer_for_getopt_long_app {
             my $type = $c_args{type};
 
             if ($type eq 'arg') {
-                _complete($f_args{'{arg}'}, \%c_args);
+                return _complete($f_args{'{arg}'}, \%c_args);
             } elsif ($type eq 'optval') {
-                _complete($f_args{ospec}, \%c_args);
+                return _complete($f_args{ $c_args{ospec} }, \%c_args);
             }
             undef;
         },
-        map {$_ => sub{}} grep {$_ ne '{arg}'} keys %args,
+        map {$_ => sub{}} grep {$_ ne '{arg}'} keys %f_args,
     );
 }
 
