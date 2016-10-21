@@ -36,7 +36,7 @@ sub run_shell_completer_for_getopt_long_app {
 
     my %f_args = @_;
 
-    unless ($ENV{COMP_LINE} or $ENV{COMMAND_LINE}) {
+    unless ($ENV{GETOPT_LONG_DUMP} || $ENV{COMP_LINE} || $ENV{COMMAND_LINE}) {
         die "Please run the script under shell completion\n";
     }
 
