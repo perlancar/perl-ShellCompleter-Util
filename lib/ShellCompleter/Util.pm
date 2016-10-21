@@ -66,6 +66,8 @@ sub run_shell_completer_for_getopt_long_app {
 
 =head1 DESCRIPTION
 
+B<This module will be replaced by the newer Shell::Completer when it is ready.>
+
 This module provides utility routines for C<App::ShellCompleter::*>
 applications.
 
