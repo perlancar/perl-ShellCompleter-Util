@@ -16,7 +16,15 @@ our @EXPORT_OK = qw(
                );
 
 sub _complete {
-    my ($comp, $args) = @_;
+    my ($comp0, $args) = @_;
+
+    my $comp;
+    if(ref($comp0) eq 'HASH') {
+        $comp = $comp0->{completion};
+    } else {
+        $comp = $comp0;
+    }
+
     if (ref($comp) eq 'ARRAY') {
         require Complete::Util;
         return Complete::Util::complete_array_elem(
