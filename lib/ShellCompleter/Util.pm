@@ -9,8 +9,6 @@ use warnings;
 
 require Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(
-               );
 our @EXPORT_OK = qw(
                     run_shell_completer_for_getopt_long_app
                );
