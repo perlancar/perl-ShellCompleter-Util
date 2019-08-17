@@ -56,6 +56,7 @@ sub run_shell_completer_for_getopt_long_app {
             if ($type eq 'arg') {
                 return _complete($f_args{'{arg}'}, \%c_args);
             } elsif ($type eq 'optval') {
+                return unless $c_args{ospec};
                 return _complete($f_args{ $c_args{ospec} }, \%c_args);
             }
             undef;
